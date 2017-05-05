@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioButton;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 
@@ -18,6 +20,7 @@ import vladimir.enough.adapters.EnergyConsAdapter;
 import vladimir.enough.databinding.ActivityEnergyConsumptionBinding;
 import vladimir.enough.interfaces.OnItemClickListener;
 import vladimir.enough.models.KindsOfActivity;
+import vladimir.enough.models.PersonalInfo;
 
 public class EnergyConsumption extends AppCompatActivity implements OnItemClickListener<KindsOfActivity>, View.OnClickListener {
 
@@ -25,7 +28,9 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
     private EnergyConsAdapter adapter;
     DB dbHelper;
     private ArrayList<KindsOfActivity> acts;
-
+    private ArrayList<PersonalInfo> personalInfo;
+    EditText etAge, etHeight, etWeight;
+    private String sex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +38,39 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
 
         binding.buttonOk.setOnClickListener(this);
 
+        etAge = (EditText) findViewById(R.id.etAge);
+        etHeight = (EditText) findViewById(R.id.etHeight);
+        etWeight = (EditText) findViewById(R.id.etWeight);
+
+        RadioButton rbW = (RadioButton) findViewById(R.id.rbW);
+        rbW.setOnClickListener(radioButtonClickListener);
+        RadioButton rbM = (RadioButton) findViewById(R.id.rbM);
+        rbM.setOnClickListener(radioButtonClickListener);
+
+
         RecyclerView rvCons = (RecyclerView) findViewById(R.id.rvCons);
         rvCons.setHasFixedSize(true);
         rvCons.setLayoutManager(new LinearLayoutManager(this));
 
+
         dbHelper = new DB(this);
         acts = dbHelper.getAllActivities();
 
+        personalInfo = dbHelper.getPersonalInfo();
+
+        etAge.setText (String.valueOf( personalInfo.get(0).getAge()));
+        etHeight.setText(String.valueOf( personalInfo.get(0).getHeight()));
+        etWeight.setText(String.valueOf(personalInfo.get(0).getWeight()));
+        switch (personalInfo.get(0).getSex()){
+            case "M":
+                rbM.setChecked(true);
+                break;
+            case "W":
+                rbW.setChecked(true);
+        }
 
         adapter = new EnergyConsAdapter(acts, this);
         rvCons.setAdapter(adapter);
-
 
 
     }
@@ -59,7 +86,7 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
                         int time = Integer.parseInt(input.toString());
                         item.setTime(time);
                         adapter.notifyDataSetChanged();
-                        dbHelper.addTime(time,item.getId());
+                        dbHelper.addTime(time, item.getId());
 
                     }
                 })
@@ -69,14 +96,35 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
 
     }
 
+    View.OnClickListener radioButtonClickListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.rbM:
+                    sex="M";
+                    break;
+                case R.id.rbW:
+                    sex="W";
+            }
+        }
+    };
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_ok: {
                 for (KindsOfActivity activity : acts) {
                     activity.getTime();
+
                 }
+                int age = Integer.parseInt(etAge.getText().toString());
+                int weight = Integer.parseInt(etWeight.getText().toString());
+                int height = Integer.parseInt(etHeight.getText().toString());
+                dbHelper.setPersonalInfo(age,weight,height,sex,1);
+
             }
+
         }
     }
 }

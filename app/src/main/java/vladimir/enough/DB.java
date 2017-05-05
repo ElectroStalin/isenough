@@ -10,6 +10,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import java.util.ArrayList;
 
 import vladimir.enough.models.KindsOfActivity;
+import vladimir.enough.models.PersonalInfo;
 
 /**
  * Created by 32669 on 03.05.2017.
@@ -75,6 +76,55 @@ public class DB extends SQLiteAssetHelper {
 
         db.update(DATABASE_TABLE, values, "_id" + " = ?",
                 new String[] { String.valueOf(id) });
+        db.close();
+    }
+    public void setPersonalInfo(int age,int weight, int height,String sex, int id){
+        String DATABASE_TABLE = "PersonalInfo";
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("height",height);
+        values.put("weight",weight);
+        values.put("age",age);
+        values.put("sex",sex);
+        db.update(DATABASE_TABLE, values, "_id" + " = ?",
+                new String[] { String.valueOf(id) });
+
+        db.close();
 
     }
+    public ArrayList<PersonalInfo> getPersonalInfo(){
+        ArrayList<PersonalInfo> personalInfos=new ArrayList<>();
+        String DATABASE_TABLE = "PersonalInfo";
+
+        String selectQuery = "SELECT * FROM " + DATABASE_TABLE;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(selectQuery, null);
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (cursor == null) {
+            return new ArrayList<>();
+        }
+        if (cursor.moveToFirst()) {
+            do {
+
+                PersonalInfo personalInfo = new PersonalInfo();
+                personalInfo.setHeight(cursor.getInt(1));
+                personalInfo.setWeight(cursor.getInt(2));
+                personalInfo.setAge(cursor.getInt(3));
+                personalInfo.setSex(cursor.getString(4));
+                personalInfos.add(personalInfo);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return personalInfos;
+
+    }
+
 }

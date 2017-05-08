@@ -167,6 +167,48 @@ public class DB extends SQLiteAssetHelper {
 
     }
 
+    public ArrayList<PersonalConsumtion> getAllPersonalEnergy(){
+
+        ArrayList<PersonalConsumtion> personalConsumtions=new ArrayList<>();
+
+        String DATABASE_TABLE = "PersonalEnergy";
+
+        String selectQuery = "SELECT * FROM " + DATABASE_TABLE;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery(selectQuery, null);
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (cursor == null) {
+            return new ArrayList<>();
+        }
+
+        cursor = db.query(DATABASE_TABLE, null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                PersonalConsumtion personalConsumtion=new PersonalConsumtion();
+                personalConsumtion.setDate(cursor.getString(0));
+                personalConsumtion.setDailyCallories(cursor.getDouble(1));
+                personalConsumtion.setDailyProteins(cursor.getDouble(2));
+                personalConsumtion.setDailyLipids(cursor.getDouble(3));
+                personalConsumtion.setDailyCarbonides(cursor.getDouble(4));
+                personalConsumtion.setCurrentCallories(cursor.getDouble(5));
+                personalConsumtion.setCurrentProteins(cursor.getDouble(6));
+                personalConsumtion.setCurrentLipids(cursor.getDouble(7));
+                personalConsumtion.setDailyCarbonides(cursor.getDouble(8));
+                personalConsumtions.add(personalConsumtion);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return personalConsumtions;
+
+    }
+
     public PersonalConsumtion getTodayPersonalEnergy() {
         Date today = new Date();
         SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
@@ -261,21 +303,35 @@ public class DB extends SQLiteAssetHelper {
         db.close();
 
     }
-     public boolean rowExsist(String table, String selection, String[] selectionArgs){
-         SQLiteDatabase db = this.getWritableDatabase();
-         String selectQuery = "SELECT * FROM " + table;
-         String selector = selection+" = ?";
-         Cursor cursor = null;
-         try {
-             cursor = db.query(table, null, selector, selectionArgs, null, null, null);
-         } catch (android.database.SQLException e) {
-             e.printStackTrace();
-         }
+    public void clearPersonalEnergy(){
+        String DATABASE_TABLE = "PersonalEnergy";
+        SQLiteDatabase db = this.getWritableDatabase();
 
-         if (cursor == null) {
-         return false;
-         }else
-             return true;
+        Date today = new Date();
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
+        String date = DATE_FORMAT.format(today);
+        String[] d=new String[1];
+        d[0]=date;
+        db.delete(DATABASE_TABLE, "date <> ? ", d);
 
-     }
+    }
+
+
+//     public boolean rowExsist(String table, String selection, String[] selectionArgs){
+//         SQLiteDatabase db = this.getWritableDatabase();
+//         String selectQuery = "SELECT * FROM " + table;
+//         String selector = selection+" = ?";
+//         Cursor cursor = null;
+//         try {
+//             cursor = db.query(table, null, selector, selectionArgs, null, null, null);
+//         } catch (android.database.SQLException e) {
+//             e.printStackTrace();
+//         }
+//
+//         if (cursor == null) {
+//         return false;
+//         }else
+//             return true;
+//
+//     }
 }

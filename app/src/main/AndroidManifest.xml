@@ -20,7 +20,9 @@
         <activity android:name=".activity.ListItem" />
         <activity android:name=".PersonalInfo" />
         <activity android:name=".activity.PersonalConsumption" />
-        <activity android:name=".activity.DailyConsumpion"></activity>
+        <activity android:name=".activity.DailyConsumpion" />
+        <activity android:name=".activity.ConsumtionHistory" />
+        <activity android:name=".activity.HistoryItem"></activity>
     </application>
 
 </manifest>

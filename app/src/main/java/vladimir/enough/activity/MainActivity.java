@@ -56,19 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         twCurProt.setText(String.valueOf( personalConsumtion.getCurrentProteins()));
         twCurLip.setText(String.valueOf(personalConsumtion.getCurrentLipids()));
         twCurCarb.setText(String.valueOf(personalConsumtion.getCurrentCarbonides()));
-
-
-
-
-
-
-
-
-
-
-
-
-
+        dbHelper.close();
     }
 
     @Override
@@ -80,9 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button2:
-
-
-
+                intent = new Intent(this, ConsumtionHistory.class);
+                startActivity(intent);
                 break;
             default:
                 break;

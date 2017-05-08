@@ -101,6 +101,7 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
                         adapter.notifyDataSetChanged();
                         dbHelper.addTime(time, item.getId());
 
+
                     }
                 })
                 .negativeText("Cancel")
@@ -149,6 +150,7 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
 
                     Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);
+
                 } else {
 
                     Toast toast = Toast.makeText(getApplicationContext(),

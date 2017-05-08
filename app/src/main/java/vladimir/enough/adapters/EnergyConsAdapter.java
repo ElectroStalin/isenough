@@ -75,15 +75,14 @@ public class EnergyConsAdapter extends RecyclerView.Adapter<EnergyConsAdapter.Vi
 
         public void setItem(KindsOfActivity kindsOfActivity) {
             this.kindsOfActivity = kindsOfActivity;
-
-            double x = kindsOfActivity.getConsumptionVal();
-
             listItemBinding.textViewHead.setText(kindsOfActivity.getActivityName());
-            listItemBinding.textViewDescription.setText(String.valueOf(x));
+            listItemBinding.textViewDescription.setText(String.valueOf(kindsOfActivity.getConsumptionVal()));
 
             if (kindsOfActivity.getTime() != 0) {
                 listItemBinding.time.setText(String.valueOf(kindsOfActivity.getTime()));
-            }
+            } else {
+            listItemBinding.time.setText("0");
+        }
         }
 
         @Override

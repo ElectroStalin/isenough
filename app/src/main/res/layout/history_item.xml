@@ -1,90 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="vladimir.enough.activity.DailyConsumpion">
 
-    <TableLayout
+<layout>
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="4">
+        android:layout_height="wrap_content">
 
         <TableRow>
 
             <TextView
-                android:id="@+id/twDayCal"
+                android:id="@+id/twDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text=""
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/twDayProt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/twDayLip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/twDayCarb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:text="" />
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="TextView" />
         </TableRow>
 
-        <TableRow>
+        <TableRow android:weightSum="4">
 
             <TextView
-                android:id="@+id/twCurCal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/twDayCal"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/twCurProt"
+                android:id="@+id/twCal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAlignment="center"
-                android:text="" />
-
+                android:text="TextView" />
 
             <TextView
-                android:id="@+id/twCurLip"
+                android:id="@+id/twProt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAlignment="center"
-                android:text="" />
+                android:text="TextView" />
 
             <TextView
-                android:id="@+id/twCurCarb"
+                android:id="@+id/twLip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textAlignment="center"
-                android:text="" />
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/twCarb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
 
 
         </TableRow>
 
+        <TableRow android:weightSum="4">
+
+            <TextView
+                android:id="@+id/twFactCal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+
+            <TextView
+                android:id="@+id/twFactProt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/twFactLip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/twFactCarb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+
+        </TableRow>
     </TableLayout>
-
-</RelativeLayout>
+</layout>

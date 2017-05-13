@@ -14,24 +14,24 @@ import vladimir.enough.models.PersonalConsumtion;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     DB dbHelper;
-
+    PersonalConsumtion personalConsumtion;
 
     Button btnConsEnergy,button2;
     TextView twDayCal, twDayProt, twDayLip, twDayCarb;
     TextView twCurCal, twCurProt, twCurLip, twCurCarb;
-    PersonalConsumtion personalConsumtion;
-
-    @Override
+    TextView tvBasicExchange;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tvBasicExchange=(TextView)findViewById(R.id.tvBasicExchange);
 
         twDayCal=(TextView)findViewById(R.id.twDayCal);
         twDayProt=(TextView)findViewById(R.id.twDayProt);
         twDayLip=(TextView)findViewById(R.id.twDayLip);
         twDayCarb=(TextView)findViewById(R.id.twDayCarb);
-        twCurCal=(TextView)findViewById(R.id.twCurCal);
 
+        twCurCal=(TextView)findViewById(R.id.twCurCal);
         twCurProt=(TextView)findViewById(R.id.twCurProt);
         twCurLip=(TextView)findViewById(R.id.twCurLip);
         twCurCarb=(TextView)findViewById(R.id.twCurCarb);
@@ -46,16 +46,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbHelper=new DB(this);
 
         personalConsumtion=dbHelper.getTodayPersonalEnergy();
+
+
         twDayCal.setText(String.valueOf( "каллории "+personalConsumtion.getDailyCallories()));
         twDayProt.setText(String.valueOf( "белки "+personalConsumtion.getDailyProteins()));
         twDayLip.setText(String.valueOf( "жиры "+personalConsumtion.getDailyLipids()));
-        twDayCarb.setText(String.valueOf( "углеводы " +personalConsumtion.getDailyCarbonides()));
+        twDayCarb.setText(String.valueOf( "углеводы " +personalConsumtion.getDailyCarbohydrates()));
 
 
         twCurCal.setText(String.valueOf( personalConsumtion.getCurrentCallories()));
         twCurProt.setText(String.valueOf( personalConsumtion.getCurrentProteins()));
         twCurLip.setText(String.valueOf(personalConsumtion.getCurrentLipids()));
-        twCurCarb.setText(String.valueOf(personalConsumtion.getCurrentCarbonides()));
+        twCurCarb.setText(String.valueOf(personalConsumtion.getCurrentCarbohydrates()));
         dbHelper.close();
     }
 

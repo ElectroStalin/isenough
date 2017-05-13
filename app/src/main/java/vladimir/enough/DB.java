@@ -32,6 +32,7 @@ public class DB extends SQLiteAssetHelper {
     }
 
 
+
     public ArrayList<KindsOfActivity> getAllActivities() {
         ArrayList<KindsOfActivity> activities = new ArrayList<>();
 
@@ -195,11 +196,12 @@ public class DB extends SQLiteAssetHelper {
                 personalConsumtion.setDailyCallories(cursor.getDouble(1));
                 personalConsumtion.setDailyProteins(cursor.getDouble(2));
                 personalConsumtion.setDailyLipids(cursor.getDouble(3));
-                personalConsumtion.setDailyCarbonides(cursor.getDouble(4));
+                personalConsumtion.setDailyCarbohydrates(cursor.getDouble(4));
                 personalConsumtion.setCurrentCallories(cursor.getDouble(5));
                 personalConsumtion.setCurrentProteins(cursor.getDouble(6));
                 personalConsumtion.setCurrentLipids(cursor.getDouble(7));
-                personalConsumtion.setDailyCarbonides(cursor.getDouble(8));
+                personalConsumtion.setDailyCarbohydrates(cursor.getDouble(8));
+                personalConsumtion.setBasicExchenge(cursor.getDouble(9));
                 personalConsumtions.add(personalConsumtion);
             } while (cursor.moveToNext());
         }
@@ -241,11 +243,12 @@ public class DB extends SQLiteAssetHelper {
                 personalConsumtion.setDailyCallories(cursor.getDouble(1));
                 personalConsumtion.setDailyProteins(cursor.getDouble(2));
                 personalConsumtion.setDailyLipids(cursor.getDouble(3));
-                personalConsumtion.setDailyCarbonides(cursor.getDouble(4));
+                personalConsumtion.setDailyCarbohydrates(cursor.getDouble(4));
                 personalConsumtion.setCurrentCallories(cursor.getDouble(5));
                 personalConsumtion.setCurrentProteins(cursor.getDouble(6));
                 personalConsumtion.setCurrentLipids(cursor.getDouble(7));
-                personalConsumtion.setDailyCarbonides(cursor.getDouble(8));
+                personalConsumtion.setCurrentCarbohydrates(cursor.getDouble(8));
+                personalConsumtion.setBasicExchenge(cursor.getDouble(9));
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -266,11 +269,12 @@ public class DB extends SQLiteAssetHelper {
         values.put("daily_callories", personalConsumtion.getDailyCallories());
         values.put("daily_proteins", personalConsumtion.getDailyProteins());
         values.put("daily_lipids", personalConsumtion.getDailyLipids());
-        values.put("daily_carbohydrates", personalConsumtion.getDailyCarbonides());
+        values.put("daily_carbohydrates", personalConsumtion.getDailyCarbohydrates());
         values.put("current_callories", personalConsumtion.getCurrentCallories());
         values.put("current_proteins", personalConsumtion.getCurrentProteins());
         values.put("current_lipids", personalConsumtion.getCurrentLipids());
-        values.put("current_carbohydrates", personalConsumtion.getCurrentCarbonides());
+        values.put("current_carbohydrates", personalConsumtion.getCurrentCarbohydrates());
+        values.put("basic_exchenge", personalConsumtion.getBasicExchenge());
 
         String[] args=new String[1];
         args[0]=date;
@@ -299,6 +303,7 @@ public class DB extends SQLiteAssetHelper {
         values.put("current_proteins", val);
         values.put("current_lipids", val);
         values.put("current_carbohydrates", val);
+        values.put("basic_exchenge", val);
         db.insert(DATABASE_TABLE, null, values);
         db.close();
 

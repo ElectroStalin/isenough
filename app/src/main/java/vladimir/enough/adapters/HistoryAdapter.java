@@ -71,12 +71,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             historyItemBinding.twCal.setText(String.valueOf(personalConsumtion.getDailyCallories()));
             historyItemBinding.twProt.setText(String.valueOf(personalConsumtion.getDailyProteins()));
             historyItemBinding.twLip.setText(String.valueOf(personalConsumtion.getDailyLipids()));
-            historyItemBinding.twCarb.setText(String.valueOf(personalConsumtion.getDailyCarbonides()));
+            historyItemBinding.twCarb.setText(String.valueOf(personalConsumtion.getDailyCarbohydrates()));
             historyItemBinding.twFactCal.setText(String.valueOf(personalConsumtion.getCurrentCallories()));
             historyItemBinding.twFactProt.setText(String.valueOf(personalConsumtion.getCurrentProteins()));
             historyItemBinding.twFactLip.setText(String.valueOf(personalConsumtion.getCurrentLipids()));
-            historyItemBinding.twFactCarb.setText(String.valueOf(personalConsumtion.getCurrentCarbonides()));
-
+            historyItemBinding.twFactCarb.setText(String.valueOf(personalConsumtion.getCurrentCarbohydrates()));
+            historyItemBinding.tvBasicExchange.setText("Основной обмен "+String.valueOf(personalConsumtion.getBasicExchenge())+" ккал");
         }
 
 

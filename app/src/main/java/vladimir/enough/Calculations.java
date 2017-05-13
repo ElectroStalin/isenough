@@ -23,28 +23,49 @@ public class Calculations {
         this.dbHelper = dbHelper;
     }
 
+
+
     public void calculateDailyConsumption(PersonalConsumtion personalConsumtion) {
         String currentDate = currentDate();
 
 
         acts = dbHelper.getAllActivities();
+
+
+
         personalInfo = dbHelper.getPersonalInfo();
+
+        //formula maffina-geora
+        if (personalInfo.get(0).getSex()=="W"){
+            double bx= 9.99*personalInfo.get(0).getWeight()+6.25*personalInfo.get(0).getHeight()-
+                    4.92*personalInfo.get(0).getAge()-161;
+            personalConsumtion.setBasicExchenge(bx);
+        }else {
+            double bx= 9.99*personalInfo.get(0).getWeight()+6.25*personalInfo.get(0).getHeight()-
+                    4.92*personalInfo.get(0).getAge()+5;
+            personalConsumtion.setBasicExchenge(bx);
+
+        }
+
+
         double dailyCallories = 0;
         double dailyProteins = 0;
         double dailyLipids = 0;
         double dailyCarbonides = 0;
 
+
+
+
         for (int i = 0; i < acts.size(); i++) {
             dailyCallories += acts.get(i).getConsumptionVal() * acts.get(i).getTime();
         }
 
-        dailyCallories *= personalInfo.get(0).getWeight() + dailyCallories * 0.1;
-        dailyProteins = dailyCallories * 0.14;
-        dailyLipids = dailyCallories * 0.3;
-        dailyCarbonides = dailyCallories * 0.56;
+        dailyProteins = dailyCallories * 0.14 /4;
+        dailyLipids = dailyCallories * 0.3/9;
+        dailyCarbonides = dailyCallories * 0.56/4;
         personalConsumtion.setDailyCallories(round(dailyCallories));
         personalConsumtion.setDailyLipids(round(dailyLipids) );
-        personalConsumtion.setDailyCarbonides(round(dailyCarbonides));
+        personalConsumtion.setDailyCarbohydrates(round(dailyCarbonides));
         personalConsumtion.setDailyProteins(round(dailyProteins));
 
 
@@ -58,7 +79,7 @@ public class Calculations {
         double currentCallories = personalConsumtion.getCurrentCallories();
         double currentProteins = personalConsumtion.getCurrentProteins();
         double currentLipids = personalConsumtion.getCurrentLipids();
-        double currentCarbonides = personalConsumtion.getCurrentCarbonides();
+        double currentCarbonides = personalConsumtion.getCurrentCarbohydrates();
 
         currentCallories += (product.getCallories() / 100) * product.getWeight();
         currentProteins += (product.getProteins() / 100) * product.getWeight();
@@ -68,7 +89,7 @@ public class Calculations {
         personalConsumtion.setCurrentCallories(round(currentCallories));
         personalConsumtion.setCurrentProteins(round(currentProteins));
         personalConsumtion.setCurrentLipids(round(currentLipids));
-        personalConsumtion.setCurrentCarbonides(round(currentCarbonides));
+        personalConsumtion.setCurrentCarbohydrates(round(currentCarbonides));
 
 
 

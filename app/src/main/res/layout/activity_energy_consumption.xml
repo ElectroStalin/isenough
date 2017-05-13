@@ -8,9 +8,14 @@
         tools:context="vladimir.enough.activity.EnergyConsumption">
 
         <LinearLayout
+            android:background="#38006b"
+
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height   ="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
 
             <TextView
                 android:id="@+id/twAge"
@@ -105,20 +110,33 @@
             android:layout_below="@+id/linearLayout"
             />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvCons"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/twDescription"
-            android:layout_above="@+id/button_ok" />
-
         <Button
             android:id="@+id/button_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="OK" />
+            android:text="OK"
+            />
+
+        <TextView
+            android:id="@+id/twTimeLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/rvCons"
+            android:text="осталось заполнить" />
+
+        <android.support.v7.widget.RecyclerView
+            android:background="#FFFFFF"
+            android:id="@+id/rvCons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/button_ok"
+            android:layout_below="@+id/twDescription" >
+
+        </android.support.v7.widget.RecyclerView>
+
     </RelativeLayout>
 </layout>

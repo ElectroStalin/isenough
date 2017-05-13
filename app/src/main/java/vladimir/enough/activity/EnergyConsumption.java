@@ -2,6 +2,7 @@ package vladimir.enough.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -89,6 +90,7 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
     public void onActivityClick(final KindsOfActivity item, int position) {
         new MaterialDialog.Builder(this)
                 .title("Продолжительность")
+                .backgroundColor(Color.rgb(63, 81, 181))
                 .inputType(InputType.TYPE_CLASS_NUMBER)
                 .input("Введите время", "", new MaterialDialog.InputCallback() {
                     @Override

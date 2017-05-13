@@ -9,11 +9,12 @@ public class PersonalConsumtion {
     double dailyCallories;
     double dailyProteins;
     double dailyLipids;
-    double dailyCarbonides;
+    double dailyCarbohydrates;
     double currentCallories;
     double currentProteins;
     double currentLipids;
-    double currentCarbonides;
+    double currentCarbohydrates;
+    double basicExchenge;
 
     public PersonalConsumtion() {
     }
@@ -22,8 +23,8 @@ public class PersonalConsumtion {
         return currentCallories;
     }
 
-    public double getCurrentCarbonides() {
-        return currentCarbonides;
+    public double getCurrentCarbohydrates() {
+        return currentCarbohydrates;
     }
 
     public double getCurrentLipids() {
@@ -38,8 +39,8 @@ public class PersonalConsumtion {
         return dailyCallories;
     }
 
-    public double getDailyCarbonides() {
-        return dailyCarbonides;
+    public double getDailyCarbohydrates() {
+        return dailyCarbohydrates;
     }
 
     public double getDailyLipids() {
@@ -58,8 +59,8 @@ public class PersonalConsumtion {
         this.currentCallories = currentCallories;
     }
 
-    public void setCurrentCarbonides(double currentCarbonides) {
-        this.currentCarbonides = currentCarbonides;
+    public void setCurrentCarbohydrates(double currentCarbohydrates) {
+        this.currentCarbohydrates = currentCarbohydrates;
     }
 
     public void setCurrentLipids(double currentLipids) {
@@ -74,8 +75,8 @@ public class PersonalConsumtion {
         this.dailyCallories = dailyCallories;
     }
 
-    public void setDailyCarbonides(double dailyCarbonides) {
-        this.dailyCarbonides = dailyCarbonides;
+    public void setDailyCarbohydrates(double dailyCarbohydrates) {
+        this.dailyCarbohydrates = dailyCarbohydrates;
     }
 
     public void setDailyLipids(double dailyLipids) {
@@ -90,5 +91,12 @@ public class PersonalConsumtion {
         this.date = date;
     }
 
+    public double getBasicExchenge() {
+        return basicExchenge;
+    }
+
+    public void setBasicExchenge(double basicExchenge) {
+        this.basicExchenge = basicExchenge;
+    }
 
 }

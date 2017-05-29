@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import vladimir.enough.Calculations;
+import vladimir.enough.DB;
 import vladimir.enough.R;
 import vladimir.enough.databinding.HistoryItemBinding;
 import vladimir.enough.interfaces.OnItemClickListener;
@@ -64,7 +66,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             historyItemBinding.getRoot().setOnClickListener(this);
         }
 
-
+        DB dbHelper;
+        Calculations calculations=new Calculations(dbHelper);
         public void setItem(PersonalConsumtion personalConsumtion){
             this.personalConsumtion=personalConsumtion;
             historyItemBinding.twDate.setText(personalConsumtion.getDate());
@@ -76,7 +79,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             historyItemBinding.twFactProt.setText(String.valueOf(personalConsumtion.getCurrentProteins()));
             historyItemBinding.twFactLip.setText(String.valueOf(personalConsumtion.getCurrentLipids()));
             historyItemBinding.twFactCarb.setText(String.valueOf(personalConsumtion.getCurrentCarbohydrates()));
-            historyItemBinding.tvBasicExchange.setText("Основной обмен "+String.valueOf(personalConsumtion.getBasicExchenge())+" ккал");
+            historyItemBinding.tvBasicExchange.setText("Основной обмен "+String.valueOf((calculations.round(personalConsumtion.getBasicExchenge())))+" ккал");
+            historyItemBinding.tvIMT.setText("Индекс массы тела "+ String.valueOf(personalConsumtion.getWeightIndex()));
         }
 
 

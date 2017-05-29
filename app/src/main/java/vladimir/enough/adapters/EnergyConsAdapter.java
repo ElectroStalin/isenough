@@ -76,7 +76,7 @@ public class EnergyConsAdapter extends RecyclerView.Adapter<EnergyConsAdapter.Vi
         public void setItem(KindsOfActivity kindsOfActivity) {
             this.kindsOfActivity = kindsOfActivity;
             listItemBinding.textViewHead.setText(kindsOfActivity.getActivityName());
-            listItemBinding.textViewDescription.setText(String.valueOf(kindsOfActivity.getConsumptionVal()));
+            listItemBinding.textViewDescription.setText(String.valueOf(kindsOfActivity.getConsumptionVal())+ " Ккал/кг/мин");
 
             if (kindsOfActivity.getTime() != 0) {
                 listItemBinding.time.setText(String.valueOf(kindsOfActivity.getTime()));

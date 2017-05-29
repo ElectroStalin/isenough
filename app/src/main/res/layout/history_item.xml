@@ -1,213 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TableLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="1dp">
 
-        android:layout_marginBottom="6dp"
-        android:layout_marginTop="6dp"
-        >
-
-        <TableRow>
-            <TextView
-                android:layout_weight="1"
-                android:background="#1B1BB3"
-                android:id="@+id/twDate"
-                android:textAlignment="center"
-                android:text="TextView" />
-        </TableRow>
-
-        <TableRow
-            android:layout_marginBottom="3dp"
-            android:layout_marginTop="3dp"
-            android:weightSum="5">
-
-            <TextView
-
-                android:layout_marginRight="3dp"
-                android:layout_marginLeft="3dp"
-                android:textAlignment="center"
-                android:background="#3949AB"
-                android:id="@+id/tvBasicExchange"
-                android:layout_weight="1"
-                android:text="TextView"
-                 />
-        </TableRow>
-
-        <TableRow
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="13"
-            >
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            app:cardBackgroundColor="@color/cardview_light_background">
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:background="#3949AB"
-                android:text="/"
-                android:textAlignment="center" />
+                <LinearLayout
+                    android:id="@+id/L1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <TextView
+                        android:id="@+id/twDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#1B1BB3"
+                        android:text="TextView"
+                        android:textAlignment="center" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:background="#3949AB"
-                android:text="Ккал"
-                android:textAlignment="center" />
+                <LinearLayout
+                    android:id="@+id/L2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/L1"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp">
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:background="#3949AB"
-                android:text="Белки"
-                android:textAlignment="center" />
+                    <TextView
 
-            <TextView
-                android:id="@+id/textView4"
+                        android:id="@+id/tvBasicExchange"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0dp"
 
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:background="#3949AB"
-                android:text="Жиры"
-                android:textAlignment="center" />
+                        android:layout_marginRight="0.5dp"
+                        android:layout_weight="1"
+                        android:background="#3949AB"
+                        android:gravity="center"
+                        android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:background="#3949AB"
-                android:text="Углеводы"
-                android:textAlignment="center" />
-        </TableRow>
+                    <TextView
+                        android:id="@+id/tvIMT"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0.5dp"
+                        android:layout_weight="1"
+                        android:background="#3949AB"
+                        android:gravity="center" />
+                </LinearLayout>
 
-        <TableRow android:weightSum="5"
-            android:layout_marginBottom="3dp"
-            android:layout_marginTop="3dp">
+                <LinearLayout
+                    android:id="@+id/l3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/L2"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
 
-            <TextView
-                android:id="@+id/tvNorm"
+                    <LinearLayout
+                        android:id="@+id/vl1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:background="#3949AB"
-                android:text="Норма"
-                android:textAlignment="center" />
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="/"
+                            android:textAlignment="center"
+                            tools:layout_weight="1" />
 
+                        <TextView
+                            android:id="@+id/tvNorm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="Норма"
+                            android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/twCal"
+                        <TextView
+                            android:id="@+id/tvFact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="Факт"
+                            android:textAlignment="center" />
+                    </LinearLayout>
 
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:background="#3949AB"
-                android:text="TextView"
-                android:textAlignment="center" />
+                    <LinearLayout
+                        android:id="@+id/vl2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-            <TextView
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="Ккал"
 
-                android:textAlignment="center"
-                android:background="#3949AB"
-                android:id="@+id/twProt"
-                android:layout_weight="1"
-                android:layout_marginRight="3dp"
-                android:text="TextView" />
+                            android:textAlignment="center" />
 
-            <TextView
+                        <TextView
+                            android:id="@+id/twCal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="TextView"
+                            android:textAlignment="center" />
 
-                android:textAlignment="center"
-                android:background="#3949AB"
-                android:id="@+id/twLip"
-                android:layout_weight="1"
-                android:layout_marginRight="3dp"
-                android:text="TextView" />
+                        <TextView
+                            android:id="@+id/twFactCal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
 
-            <TextView
+                            android:background="#3949AB"
+                            android:text="TextView"
+                            android:textAlignment="center" />
+                    </LinearLayout>
 
-                android:textAlignment="center"
-                android:background="#3949AB"
-                android:id="@+id/twCarb"
-                android:layout_weight="1"
-                android:text="TextView"
-                android:layout_marginRight="3dp"/>
+                    <LinearLayout
+                        android:id="@+id/vl3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="Белки"
+                            android:textAlignment="center" />
 
-        </TableRow>
+                        <TextView
+                            android:id="@+id/twProt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="TextView"
+                            android:textAlignment="center" />
 
-        <TableRow android:weightSum="5"
-            android:layout_marginBottom="3dp"
-            android:layout_marginTop="3dp">
+                        <TextView
+                            android:id="@+id/twFactProt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="TextView"
+                            android:textAlignment="center" />
+                    </LinearLayout>
 
-            <TextView
+                    <LinearLayout
+                        android:id="@+id/vl4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                android:id="@+id/tvFact"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:layout_weight="1"
-                android:background="#3949AB"
-                android:text="Факт"
-                android:textAlignment="center" />
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="Жиры"
+                            android:textAlignment="center" />
 
-            <TextView
+                        <TextView
+                            android:id="@+id/twLip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="TextView"
+                            android:textAlignment="center" />
 
+                        <TextView
+                            android:id="@+id/twFactLip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="TextView"
+                            android:textAlignment="center" />
+                    </LinearLayout>
 
-                android:textAlignment="center"
-                android:background="#3949AB"
-                android:layout_marginRight="3dp"
-                android:layout_marginLeft="3dp"
+                    <LinearLayout
+                        android:id="@+id/vl5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                android:id="@+id/twFactCal"
-                android:layout_weight="1"
-                android:text="TextView" />
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="Углеводы"
+                            android:textAlignment="center" />
 
+                        <TextView
+                            android:id="@+id/twCarb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:text="TextView"
+                            android:textAlignment="center" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                        <TextView
+                            android:id="@+id/twFactCarb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="#3949AB"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:textAlignment="center" />
+                    </LinearLayout>
 
-                android:textAlignment="center"
-                android:background="#3949AB"
-                android:layout_marginRight="3dp"
-                android:id="@+id/twFactProt"
-                android:layout_weight="1"
-                android:text="TextView" />
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            </RelativeLayout>
 
-                android:textAlignment="center"
-                android:background="#3949AB"
-                android:layout_marginRight="3dp"
-                android:id="@+id/twFactLip"
-                android:layout_weight="1"
-                android:text="TextView" />
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:textAlignment="center"
-                android:background="#3949AB"
-                android:layout_marginRight="3dp"
-                android:id="@+id/twFactCarb"
-                android:layout_weight="1"
-                android:text="TextView" />
-
-
-        </TableRow>
-
-    </TableLayout>
 </layout>

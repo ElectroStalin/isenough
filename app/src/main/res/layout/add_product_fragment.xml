@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/Hor1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tvAddName"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:text="Название " />
+
+                <TextView
+                    android:id="@+id/tvAddCal"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:text="Ккал" />
+
+                <TextView
+                    android:id="@+id/tvAddProt"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:text="Белки" />
+
+                <TextView
+                    android:id="@+id/tvAddLip"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:text="Жиры" />
+
+                <TextView
+                    android:id="@+id/tvAddCar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:text="Углеводы" />
+
+                <TextView
+                    android:id="@+id/tvType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:text="Категория" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+              >
+
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/etAddName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:inputType="text" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/etAddCal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/etAddProt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:inputType="numberDecimal"
+                    android:maxLength="3" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/etAddLip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:inputType="numberDecimal"
+                    android:maxLength="3" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/etAddCar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:elevation="1dp"
+                    android:inputType="numberDecimal"
+                    android:maxLength="3" />
+                <EditText
+                    android:id="@+id/etAddType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="1dp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/Hor2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Hor1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnOk"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:text="ОК" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/btnOk"
+                android:text="отмена" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>

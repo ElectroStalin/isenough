@@ -15,6 +15,7 @@ public class PersonalConsumtion {
     double currentLipids;
     double currentCarbohydrates;
     double basicExchenge;
+    double weightIndex;
 
     public PersonalConsumtion() {
     }
@@ -99,4 +100,11 @@ public class PersonalConsumtion {
         this.basicExchenge = basicExchenge;
     }
 
+    public double getWeightIndex() {
+        return weightIndex;
+    }
+
+    public void setWeightIndex(double weightIndex) {
+        this.weightIndex = weightIndex;
+    }
 }

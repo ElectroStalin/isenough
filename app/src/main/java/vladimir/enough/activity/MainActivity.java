@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import vladimir.enough.Calculations;
 import vladimir.enough.DB;
 import vladimir.enough.R;
 import vladimir.enough.models.PersonalConsumtion;
@@ -16,15 +17,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     DB dbHelper;
     PersonalConsumtion personalConsumtion;
 
-    Button btnConsEnergy,button2;
+    Button btnConsEnergy,btnConsHistory,btnProducts,btnActs;
     TextView twDayCal, twDayProt, twDayLip, twDayCarb;
     TextView twCurCal, twCurProt, twCurLip, twCurCarb;
-    TextView tvBasicExchange;
+    TextView tvBX, tvIM;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvBasicExchange=(TextView)findViewById(R.id.tvBasicExchange);
+        tvBX=(TextView)findViewById(R.id.tvBX);
+        tvIM=(TextView)findViewById(R.id.tvIM);
 
         twDayCal=(TextView)findViewById(R.id.twDayCal);
         twDayProt=(TextView)findViewById(R.id.twDayProt);
@@ -39,16 +41,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnConsEnergy=(Button)findViewById(R.id.btnConsEnergy);
         btnConsEnergy.setOnClickListener(this);
-        button2=(Button)findViewById(R.id.button2);
-        button2.setOnClickListener(this);
-
-
+        btnConsHistory=(Button)findViewById(R.id.btnConsHistory);
+        btnConsHistory.setOnClickListener(this);
+        btnProducts=(Button)findViewById(R.id.btnProducts);
+        btnProducts.setOnClickListener(this);
+        btnActs=(Button)findViewById(R.id.btnActs);
+        btnActs.setOnClickListener(this);
         dbHelper=new DB(this);
 
         personalConsumtion=dbHelper.getTodayPersonalEnergy();
 
 
-        twDayCal.setText(String.valueOf( "каллории "+personalConsumtion.getDailyCallories()));
+        twDayCal.setText(String.valueOf( "Ккал "+personalConsumtion.getDailyCallories()));
         twDayProt.setText(String.valueOf( "белки "+personalConsumtion.getDailyProteins()));
         twDayLip.setText(String.valueOf( "жиры "+personalConsumtion.getDailyLipids()));
         twDayCarb.setText(String.valueOf( "углеводы " +personalConsumtion.getDailyCarbohydrates()));
@@ -58,6 +62,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         twCurProt.setText(String.valueOf( personalConsumtion.getCurrentProteins()));
         twCurLip.setText(String.valueOf(personalConsumtion.getCurrentLipids()));
         twCurCarb.setText(String.valueOf(personalConsumtion.getCurrentCarbohydrates()));
+
+        Calculations calculations=new Calculations(dbHelper);
+
+        tvBX.setText("OO "+String.valueOf(calculations.round( personalConsumtion.getBasicExchenge())));
+        tvIM.setText("ИМТ "+String.valueOf(personalConsumtion.getWeightIndex()));
         dbHelper.close();
     }
 
@@ -69,10 +78,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, EnergyConsumption.class);
                 startActivity(intent);
                 break;
-            case R.id.button2:
+            case R.id.btnConsHistory:
                 intent = new Intent(this, ConsumtionHistory.class);
                 startActivity(intent);
                 break;
+            case R.id.btnProducts:
+                intent = new Intent(this, ProductsList.class);
+                startActivity(intent);
+                break;
+            case R.id.btnActs:
+                intent = new Intent(this, ActivitiesList.class);
+                startActivity(intent);
+
             default:
                 break;
         }

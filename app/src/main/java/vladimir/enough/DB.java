@@ -14,6 +14,7 @@ import java.util.Date;
 import vladimir.enough.models.KindsOfActivity;
 import vladimir.enough.models.PersonalConsumtion;
 import vladimir.enough.models.PersonalInfo;
+import vladimir.enough.models.Product;
 
 /**
  * Created by 32669 on 03.05.2017.
@@ -44,7 +45,9 @@ public class DB extends SQLiteAssetHelper {
 
         Cursor cursor = null;
         try {
-            cursor = db.rawQuery(selectQuery, null);
+        //    cursor = db.rawQuery(selectQuery, null);
+
+        cursor=db.query(DATABASE_TABLE,null,null,null,null,null,"type");
         } catch (android.database.SQLException e) {
             e.printStackTrace();
         }
@@ -52,6 +55,7 @@ public class DB extends SQLiteAssetHelper {
         if (cursor == null) {
             return new ArrayList<>();
         }
+
         if (cursor.moveToFirst()) {
             do {
 
@@ -179,7 +183,8 @@ public class DB extends SQLiteAssetHelper {
 
         Cursor cursor = null;
         try {
-            cursor = db.rawQuery(selectQuery, null);
+            cursor = db.query(DATABASE_TABLE, null, null, null, null, null, null);
+
         } catch (android.database.SQLException e) {
             e.printStackTrace();
         }
@@ -188,7 +193,6 @@ public class DB extends SQLiteAssetHelper {
             return new ArrayList<>();
         }
 
-        cursor = db.query(DATABASE_TABLE, null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
                 PersonalConsumtion personalConsumtion=new PersonalConsumtion();
@@ -202,6 +206,7 @@ public class DB extends SQLiteAssetHelper {
                 personalConsumtion.setCurrentLipids(cursor.getDouble(7));
                 personalConsumtion.setDailyCarbohydrates(cursor.getDouble(8));
                 personalConsumtion.setBasicExchenge(cursor.getDouble(9));
+                personalConsumtion.setWeightIndex(cursor.getDouble(10));
                 personalConsumtions.add(personalConsumtion);
             } while (cursor.moveToNext());
         }
@@ -249,6 +254,7 @@ public class DB extends SQLiteAssetHelper {
                 personalConsumtion.setCurrentLipids(cursor.getDouble(7));
                 personalConsumtion.setCurrentCarbohydrates(cursor.getDouble(8));
                 personalConsumtion.setBasicExchenge(cursor.getDouble(9));
+                personalConsumtion.setWeightIndex(cursor.getDouble(10));
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -275,6 +281,7 @@ public class DB extends SQLiteAssetHelper {
         values.put("current_lipids", personalConsumtion.getCurrentLipids());
         values.put("current_carbohydrates", personalConsumtion.getCurrentCarbohydrates());
         values.put("basic_exchenge", personalConsumtion.getBasicExchenge());
+        values.put("weight_index", personalConsumtion.getWeightIndex());
 
         String[] args=new String[1];
         args[0]=date;
@@ -304,6 +311,7 @@ public class DB extends SQLiteAssetHelper {
         values.put("current_lipids", val);
         values.put("current_carbohydrates", val);
         values.put("basic_exchenge", val);
+        values.put("weight_index", val);
         db.insert(DATABASE_TABLE, null, values);
         db.close();
 
@@ -321,22 +329,59 @@ public class DB extends SQLiteAssetHelper {
 
     }
 
+    public ArrayList<Product> getAllProducts() {
+        ArrayList<Product> products = new ArrayList<>();
 
-//     public boolean rowExsist(String table, String selection, String[] selectionArgs){
-//         SQLiteDatabase db = this.getWritableDatabase();
-//         String selectQuery = "SELECT * FROM " + table;
-//         String selector = selection+" = ?";
-//         Cursor cursor = null;
-//         try {
-//             cursor = db.query(table, null, selector, selectionArgs, null, null, null);
-//         } catch (android.database.SQLException e) {
-//             e.printStackTrace();
-//         }
-//
-//         if (cursor == null) {
-//         return false;
-//         }else
-//             return true;
-//
-//     }
+        String DATABASE_TABLE = "Products";
+
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = null;
+        try {
+            //    cursor = db.rawQuery(selectQuery, null);
+
+           cursor=db.query(DATABASE_TABLE,null,null,null,null,null,"type");
+          //  cursor=db.query(DATABASE_TABLE,null,null,null,null,null,null);
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (cursor == null) {
+            return new ArrayList<>();
+        }
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                Product product = new Product();
+                product.setName(cursor.getString(1));
+                product.setCallories(cursor.getDouble(2));
+                product.setProteins(cursor.getDouble(3));
+                product.setLipids(cursor.getDouble(4));
+                product.setCarbohydrates(cursor.getDouble(5));
+                products.add(product);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return products;
+    }
+    public void insertProduct(Product product){
+        String DATABASE_TABLE = "Products";
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        
+        values.put("name", product.getName());
+        values.put("callories", product.getCallories());
+        values.put("proteins", product.getProteins());
+        values.put("lipids", product.getLipids());
+        values.put("carbohydrates", product.getCarbohydrates());
+        values.put("type", product.getType());
+
+        db.insert(DATABASE_TABLE, null, values);
+        db.close();
+
+    }
 }

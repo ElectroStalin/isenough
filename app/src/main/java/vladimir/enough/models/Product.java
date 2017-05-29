@@ -10,7 +10,7 @@ public class Product {
     double callories;
     double proteins;
     double lipids;
-    double carbonides;
+    double carbohydrates;
     String type;
     int weight;
 
@@ -66,12 +66,12 @@ public class Product {
         this.lipids = lipids;
     }
 
-    public double getCarbonides() {
-        return carbonides;
+    public double getCarbohydrates() {
+        return carbohydrates;
     }
 
-    public void setCarbonides(double carbonides) {
-        this.carbonides = carbonides;
+    public void setCarbohydrates(double carbohydrates) {
+        this.carbohydrates = carbohydrates;
     }
 
     public String getType() {

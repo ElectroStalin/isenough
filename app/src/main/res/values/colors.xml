@@ -7,5 +7,7 @@
 
     <color name="colorPrimaryDark1">#303F9F</color>
     <color name="colorPrimary2">#3F51B5</color>
+    <color name="cvColor">#38006b</color>
+    <color name="colorRed">#DD2C00</color>
 
 </resources>

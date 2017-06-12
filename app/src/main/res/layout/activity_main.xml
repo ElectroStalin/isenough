@@ -1,218 +1,412 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#38006b"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="vladimir.enough.activity.MainActivity"
     >
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        tools:context="vladimir.enough.activity.MainActivity">
 
-        app:cardBackgroundColor="#EEEEEE"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabConsumeFood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="false"
+            android:layout_margin="5dp"
+            android:baselineAlignBottom="false"
+            android:clickable="true"
+            android:drawingCacheQuality="high"
+            android:translationY="1dp"
+            android:translationZ="2dp"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/plus" />
 
-        app:cardCornerRadius="3dp"
-        app:cardElevation="0dp"
-        app:contentPadding="1dp">
-
-        <TableLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="false"
+            android:layout_alignStart="@+id/cardView"
+            android:layout_below="@+id/cardView"
+            android:layout_margin="2dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnConsEnergy"
+
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:text="Установить дневную активность"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="1dp" />
+
+            <Button
+                android:id="@+id/btnTodayFood"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:text="Съедено сегодня" />
+
+            <Button
+                android:id="@+id/btnProducts"
+
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="left|center"
+                android:text="Продукты" />
+
+            <Button
+                android:id="@+id/btnActs"
+
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:text="список активностей" />
+
+            <Button
+                android:id="@+id/btnConsHistory"
+
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/button"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorPrimaryDark"
+                android:text="история энергозатрат" />
+
+            <Button
+                android:id="@+id/btnFoodHist"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:text="История потребления пищи"
+                android:textAlignment="viewStart" />
+
+            <Button
+                android:id="@+id/btnInf"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorPrimaryDark"
+                android:text="Инфо"
+                android:textAlignment="viewStart" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:translationY="3dp"
+            android:translationZ="4dp"
+            app:cardBackgroundColor="@color/colorPrimaryDark1"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
 
-            android:orientation="horizontal"
-            android:weightSum="4">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2.5dp"
+                android:background="@color/cardview_light_background">
 
-            <TableRow android:weightSum="2">
-
-                <TextView
-                    android:id="@+id/tvBX"
+                <LinearLayout
+                    android:id="@+id/L2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textAlignment="center"
-                    android:textColor="@color/cardview_dark_background"/>
+                    android:layout_below="@+id/L1"
+                    android:layout_marginBottom="1dp">
 
-                <TextView
-                    android:id="@+id/tvIM"
-                    android:layout_width="wrap_content"
+                    <TextView
+
+                        android:id="@+id/tvBX"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0dp"
+
+                        android:layout_marginRight="0.5dp"
+                        android:layout_marginTop="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimaryDark1"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/tvIM"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0.5dp"
+                        android:layout_marginTop="0.5dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimaryDark1"
+                        android:gravity="center"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/l3"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textAlignment="center"
-                    android:textColor="@color/cardview_dark_background"/>
+                    android:layout_below="@+id/L2"
+                    android:orientation="horizontal"
+                    android:weightSum="5">
 
-            </TableRow>
+                    <LinearLayout
+                        android:id="@+id/vl1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0.5dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:textAlignment="center"
+                            android:textSize="15sp"
+                            tools:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tvNorm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0.5dp"
+                            android:layout_marginRight="0.5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:text="Цель"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/tvFact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0.5dp"
+                            android:layout_marginRight="0.5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:text="Факт"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/vl2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0.5dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+
+                            android:background="@color/colorPrimaryDark1"
+                            android:text="Ккал"
+                            android:textAlignment="center"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/twDayCal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:maxLength="6"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/twCurCal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0.5dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:maxLength="6"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/vl3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0.5dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:text="Белки"
+                            android:textAlignment="center"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/twDayProt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:maxLength="5"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/twCurProt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0.5dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:maxLength="5"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/vl4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0.5dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:text="Жиры"
+                            android:textAlignment="center"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/twDayLip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:maxLength="5"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/twCurLip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0.5dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:maxLength="5"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/vl5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0.5dp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:text="Углеводы"
+                            android:textAlignment="center"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/twDayCarb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0.5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:maxLength="5"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/twCurCarb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="0.5dp"
+                            android:layout_marginRight="0.5dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark1"
+                            android:gravity="center"
+                            android:maxLength="5"
+                            android:textAlignment="center"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
 
 
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/twDayCal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/cardview_dark_background"/>
-
-                <TextView
-                    android:id="@+id/twDayProt"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/cardview_dark_background"/>
-
-                <TextView
-                    android:id="@+id/twDayLip"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/cardview_dark_background"/>
-
-                <TextView
-                    android:id="@+id/twDayCarb"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/cardview_dark_background"/>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/twCurCal"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/twDayCal"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/cardview_dark_background"/>
-
-                <TextView
-                    android:id="@+id/twCurProt"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/cardview_dark_background"/>
-
-
-                <TextView
-                    android:id="@+id/twCurLip"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/cardview_dark_background"/>
-
-                <TextView
-                    android:id="@+id/twCurCarb"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text=""
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/cardview_dark_background"/>
-
-
-            </TableRow>
-
-        </TableLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <Button
-        android:id="@+id/btnConsEnergy"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:background="#01579B"
-        android:elevation="2dp"
-        android:text="Потребление энергии"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="1dp"
-        android:layout_above="@+id/btnProducts"
-        android:layout_alignStart="@+id/btnConsHistory" />
-
-    <Button
-        android:id="@+id/btnConsHistory"
-
-        style="@android:style/Widget.Material.Light.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:background="#01579B"
-        android:elevation="2dp"
-        android:text="история энергозатрат"
-        android:layout_above="@+id/btnConsEnergy"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:id="@+id/btnActs"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="#01579B"
-        android:text="список активностей" />
-
-    <Button
-        android:background="#01579B"
-
-        android:id="@+id/btnProducts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Продукты"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="69dp" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#01579B"
-        android:text="+"
-        android:textSize="36sp"
-        android:layout_above="@+id/btnConsHistory"
-        android:layout_alignStart="@+id/btnProducts"
-        android:layout_marginBottom="10dp" />
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

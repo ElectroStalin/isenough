@@ -23,8 +23,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private ArrayList<PersonalConsumtion> personalConsumtions;
     private LayoutInflater layoutInflater;
 
-    public HistoryAdapter(ArrayList<PersonalConsumtion> personalConsumtions
-                          ) {
+    public HistoryAdapter(ArrayList<PersonalConsumtion> personalConsumtions) {
         this.personalConsumtions = personalConsumtions;
     }
     public void setData(ArrayList<PersonalConsumtion> personalConsumtions){
@@ -38,7 +37,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
         HistoryItemBinding historyItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                R.layout.history_item, parent, false);
+                R.layout. history_item, parent, false);
         return new ViewHolder(historyItemBinding
                 );
     }

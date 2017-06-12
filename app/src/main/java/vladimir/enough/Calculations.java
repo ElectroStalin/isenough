@@ -75,7 +75,7 @@ public class Calculations {
 
 
 
-    public void countCurrentConsumption(PersonalConsumtion personalConsumtion, Product product) {
+    public void calculateCurrentConsumptionAdd(PersonalConsumtion personalConsumtion, Product product) {
 
 
         double currentCallories = personalConsumtion.getCurrentCallories();
@@ -87,6 +87,27 @@ public class Calculations {
         currentProteins += (product.getProteins() / 100) * product.getWeight();
         currentLipids += (product.getLipids() / 100) * product.getWeight();
         currentCarbonides += (product.getCarbohydrates() / 100) * product.getWeight();
+
+        personalConsumtion.setCurrentCallories(round(currentCallories));
+        personalConsumtion.setCurrentProteins(round(currentProteins));
+        personalConsumtion.setCurrentLipids(round(currentLipids));
+        personalConsumtion.setCurrentCarbohydrates(round(currentCarbonides));
+
+
+
+    }
+  public void calculateCurrentConsumptionDel(PersonalConsumtion personalConsumtion, Product product) {
+
+
+        double currentCallories = personalConsumtion.getCurrentCallories();
+        double currentProteins = personalConsumtion.getCurrentProteins();
+        double currentLipids = personalConsumtion.getCurrentLipids();
+        double currentCarbonides = personalConsumtion.getCurrentCarbohydrates();
+
+        currentCallories -= (product.getCallories() / 100) * product.getWeight();
+        currentProteins -= (product.getProteins() / 100) * product.getWeight();
+        currentLipids -= (product.getLipids() / 100) * product.getWeight();
+        currentCarbonides -= (product.getCarbohydrates() / 100) * product.getWeight();
 
         personalConsumtion.setCurrentCallories(round(currentCallories));
         personalConsumtion.setCurrentProteins(round(currentProteins));

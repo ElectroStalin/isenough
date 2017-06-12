@@ -6,6 +6,9 @@ package vladimir.enough.models;
 
 public class Product {
     int id;
+
+
+    int prodID;
     String name;
     double callories;
     double proteins;
@@ -13,6 +16,35 @@ public class Product {
     double carbohydrates;
     String type;
     int weight;
+
+
+    public int getProdID() {
+        return prodID;
+    }
+
+    public void setProdID(int prodID) {
+        this.prodID = prodID;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    String date;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    String time;
 
     public int getWeight() {
         return weight;

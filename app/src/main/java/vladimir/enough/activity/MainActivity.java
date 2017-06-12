@@ -1,82 +1,80 @@
 package vladimir.enough.activity;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import vladimir.enough.Calculations;
 import vladimir.enough.DB;
 import vladimir.enough.R;
+import vladimir.enough.databinding.ActivityMainBinding;
 import vladimir.enough.models.PersonalConsumtion;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    DB dbHelper;
-    PersonalConsumtion personalConsumtion;
+    public DB dbHelper;
+    public PersonalConsumtion personalConsumtion;
 
-    Button btnConsEnergy,btnConsHistory,btnProducts,btnActs;
-    TextView twDayCal, twDayProt, twDayLip, twDayCarb;
-    TextView twCurCal, twCurProt, twCurLip, twCurCarb;
-    TextView tvBX, tvIM;
+    private ActivityMainBinding binding;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        tvBX=(TextView)findViewById(R.id.tvBX);
-        tvIM=(TextView)findViewById(R.id.tvIM);
+        Calculations calculations = new Calculations(dbHelper);
 
-        twDayCal=(TextView)findViewById(R.id.twDayCal);
-        twDayProt=(TextView)findViewById(R.id.twDayProt);
-        twDayLip=(TextView)findViewById(R.id.twDayLip);
-        twDayCarb=(TextView)findViewById(R.id.twDayCarb);
+        binding.btnConsEnergy.setOnClickListener(this);
+        binding.btnConsHistory.setOnClickListener(this);
+        binding.btnProducts.setOnClickListener(this);
+        binding.btnActs.setOnClickListener(this);
+        binding.fabConsumeFood.setOnClickListener(this);
+        binding.btnTodayFood.setOnClickListener(this);
+        binding.btnFoodHist.setOnClickListener(this);
+        binding.btnInf.setOnClickListener(this);
 
-        twCurCal=(TextView)findViewById(R.id.twCurCal);
-        twCurProt=(TextView)findViewById(R.id.twCurProt);
-        twCurLip=(TextView)findViewById(R.id.twCurLip);
-        twCurCarb=(TextView)findViewById(R.id.twCurCarb);
+        dbHelper = new DB(this);
 
-
-        btnConsEnergy=(Button)findViewById(R.id.btnConsEnergy);
-        btnConsEnergy.setOnClickListener(this);
-        btnConsHistory=(Button)findViewById(R.id.btnConsHistory);
-        btnConsHistory.setOnClickListener(this);
-        btnProducts=(Button)findViewById(R.id.btnProducts);
-        btnProducts.setOnClickListener(this);
-        btnActs=(Button)findViewById(R.id.btnActs);
-        btnActs.setOnClickListener(this);
-        dbHelper=new DB(this);
-
-        personalConsumtion=dbHelper.getTodayPersonalEnergy();
+        personalConsumtion = dbHelper.getTodayPersonalEnergy();
 
 
-        twDayCal.setText(String.valueOf( "Ккал "+personalConsumtion.getDailyCallories()));
-        twDayProt.setText(String.valueOf( "белки "+personalConsumtion.getDailyProteins()));
-        twDayLip.setText(String.valueOf( "жиры "+personalConsumtion.getDailyLipids()));
-        twDayCarb.setText(String.valueOf( "углеводы " +personalConsumtion.getDailyCarbohydrates()));
+        binding.twDayCal.setText(String.valueOf(calculations.round(personalConsumtion.getDailyCallories())));
+        binding.twDayProt.setText(String.valueOf(calculations.round(personalConsumtion.getDailyProteins())));
+        binding.twDayLip.setText(String.valueOf(calculations.round(personalConsumtion.getDailyLipids())));
+        binding.twDayCarb.setText(String.valueOf(calculations.round(personalConsumtion.getDailyCarbohydrates())));
 
 
-        twCurCal.setText(String.valueOf( personalConsumtion.getCurrentCallories()));
-        twCurProt.setText(String.valueOf( personalConsumtion.getCurrentProteins()));
-        twCurLip.setText(String.valueOf(personalConsumtion.getCurrentLipids()));
-        twCurCarb.setText(String.valueOf(personalConsumtion.getCurrentCarbohydrates()));
+        binding.twCurCal.setText(String.valueOf(calculations.round(personalConsumtion.getCurrentCallories())));
+        binding.twCurProt.setText(String.valueOf(calculations.round(personalConsumtion.getCurrentProteins())));
+        binding.twCurLip.setText(String.valueOf(calculations.round(personalConsumtion.getCurrentLipids())));
+        binding.twCurCarb.setText(String.valueOf(calculations.round(personalConsumtion.getCurrentCarbohydrates())));
 
-        Calculations calculations=new Calculations(dbHelper);
 
-        tvBX.setText("OO "+String.valueOf(calculations.round( personalConsumtion.getBasicExchenge())));
-        tvIM.setText("ИМТ "+String.valueOf(personalConsumtion.getWeightIndex()));
+        binding.tvBX.setText("OO " + String.valueOf(calculations.round(personalConsumtion.getBasicExchenge())));
+        binding.tvIM.setText("ИМТ " + String.valueOf(personalConsumtion.getWeightIndex()));
         dbHelper.close();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        binding.twCurCal.setText(String.valueOf(personalConsumtion.getCurrentCallories()));
+        binding.twCurProt.setText(String.valueOf(personalConsumtion.getCurrentProteins()));
+        binding.twCurLip.setText(String.valueOf(personalConsumtion.getCurrentLipids()));
+        binding.twCurCarb.setText(String.valueOf(personalConsumtion.getCurrentCarbohydrates()));
+
     }
 
     @Override
     public void onClick(View v) {
         Intent intent;
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnConsEnergy:
+
                 intent = new Intent(this, EnergyConsumption.class);
                 startActivity(intent);
+
                 break;
             case R.id.btnConsHistory:
                 intent = new Intent(this, ConsumtionHistory.class);
@@ -89,6 +87,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnActs:
                 intent = new Intent(this, ActivitiesList.class);
                 startActivity(intent);
+                break;
+            case R.id.fabConsumeFood:
+                intent = new Intent(this, ConsumeFood.class);
+                startActivity(intent);
+                break;
+            case R.id.btnTodayFood:
+                intent = new Intent(this, TodayFoodList.class);
+                startActivity(intent);
+                break;
+            case R.id.btnFoodHist:
+                intent = new Intent(this, FoodHistory.class);
+                startActivity(intent);
+                break;
+            case R.id.btnInf:
+                intent = new Intent(this, Info.class);
+                startActivity(intent);
+                break;
 
             default:
                 break;

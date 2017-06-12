@@ -2,7 +2,6 @@ package vladimir.enough.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +21,6 @@ public class ProductsList extends AppCompatActivity implements View.OnClickListe
     DB dbHelper;
     private ActivityProductsListBinding binding;
     private ArrayList<Product> products;
-    FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +34,12 @@ public class ProductsList extends AppCompatActivity implements View.OnClickListe
         products=dbHelper.getAllProducts();
 
         adapter=new ProductListAdapter(products);
+        adapter.getdbHelper(dbHelper);
+        adapter.getContext(this);
+        adapter.getAdapter(adapter);
         rvFood.setAdapter(adapter);
 
-        floatingActionButton=(FloatingActionButton)findViewById(R.id.floatingActionButton);
-        floatingActionButton.setOnClickListener(this);
+        binding.floatingActionButton.setOnClickListener(this);
     }
 
 

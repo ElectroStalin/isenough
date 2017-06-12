@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        tools:context="vladimir.enough.activity.TodayFoodList">
+
+        <TextView
+            android:id="@+id/tvToday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="TextView"
+            android:textSize="18sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvTodayFood"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tvToday"
+            android:background="@color/colorPrimaryDark"
+            android:layout_above="@+id/btnOK" />
+
+        <Button
+            android:id="@+id/btnOK"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Пересчитать с учетом изменений" />
+    </RelativeLayout>
+</layout>

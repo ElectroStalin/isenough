@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +10,21 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvActList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/backCol" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAddActiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        android:clickable="true"
+        android:translationY="1dp"
+        android:translationZ="2dp"
+        app:elevation="0dp"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/plus" />
+
 </RelativeLayout>
 </layout>

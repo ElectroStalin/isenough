@@ -32,7 +32,6 @@ public class AddProductDialog extends DialogFragment implements View.OnClickList
         getDialog().setTitle("Добавить продукт");
         binding.btnOk.setOnClickListener(this);
         binding.btnCancel.setOnClickListener(this);
-        binding.getRoot().findViewById(R.id.btnOk);
         dbHelper = new DB(getActivity());
         product=new Product();
 

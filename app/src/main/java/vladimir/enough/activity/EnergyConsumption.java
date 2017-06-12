@@ -9,9 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -35,8 +32,7 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
     DB dbHelper;
     private ArrayList<KindsOfActivity> acts;
     private ArrayList<PersonalInfo> personalInfo;
-    EditText etAge, etHeight, etWeight;
-    TextView twTimeLeft;
+
     private String sex;
 
     @Override
@@ -45,10 +41,6 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
         binding = DataBindingUtil.setContentView(this, R.layout.activity_energy_consumption);
 
         binding.buttonOk.setOnClickListener(this);
-        twTimeLeft = (TextView) findViewById(R.id.twTimeLeft);
-        etAge = (EditText) findViewById(R.id.etAge);
-        etHeight = (EditText) findViewById(R.id.etHeight);
-        etWeight = (EditText) findViewById(R.id.etWeight);
 
 
         RecyclerView rvCons = (RecyclerView) findViewById(R.id.rvCons);
@@ -72,9 +64,9 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
 
     private void chooseColor() {
         if (curTime > 1440) {
-            twTimeLeft.setTextColor(Color.parseColor("#DD2C00"));
+            binding.twTimeLeft.setTextColor(Color.parseColor("#DD2C00"));
         } else {
-            twTimeLeft.setTextColor(Color.parseColor("#EEEEEE"));
+            binding.twTimeLeft.setTextColor(Color.parseColor("#EEEEEE"));
         }
     }
 
@@ -84,35 +76,35 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
         for (int i = 0; i < t.size(); i++) {
             curTime += Integer.parseInt(t.get(i).toString());
         }
-        twTimeLeft.setText(String.valueOf(curTime) + "/1440");
+        binding.twTimeLeft.setText(String.valueOf(curTime) + "/1440");
     }
 
     private boolean editBoxesValidations() {
         int age=0;
         int height=0;
         int weight=0;
-        if(!(String.valueOf(etAge.getText()).equals(""))){
-            age = Integer.parseInt(String.valueOf(etAge.getText()));
+        if(!(String.valueOf(binding.etAge.getText()).equals(""))){
+            age = Integer.parseInt(String.valueOf(binding.etAge.getText()));
         }
-        if(!(String.valueOf(etHeight.getText()).equals(""))){
-             height = Integer.parseInt(String.valueOf(etHeight.getText()));
+        if(!(String.valueOf(binding.etHeight.getText()).equals(""))){
+             height = Integer.parseInt(String.valueOf(binding.etHeight.getText()));
         }
-        if(!(String.valueOf(etWeight.getText()).equals(""))){
-            weight = Integer.parseInt(String.valueOf(etWeight.getText()));
+        if(!(String.valueOf(binding.etWeight.getText()).equals(""))){
+            weight = Integer.parseInt(String.valueOf(binding.etWeight.getText()));
         }
         int flag=0;
         if (!(age > 16 && age < 120)) {
-            etAge.setText("0");
+            binding.etAge.setText("0");
 
             flag++;
         }
         if (!(height > 145 && height < 230)) {
-            etHeight.setText("0");
+            binding.etHeight.setText("0");
 
             flag++;
         }
         if (!(weight > 35 && weight < 200)) {
-            etWeight.setText("0");
+            binding.etWeight.setText("0");
 
         flag++;
     }
@@ -128,26 +120,26 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
 
 
     private void setAntropometryValues() {
-        etAge.setText(String.valueOf(personalInfo.get(0).getAge()));
-        etHeight.setText(String.valueOf(personalInfo.get(0).getHeight()));
-        etWeight.setText(String.valueOf(personalInfo.get(0).getWeight()));
+        binding.etAge.setText(String.valueOf(personalInfo.get(0).getAge()));
+        binding.etHeight.setText(String.valueOf(personalInfo.get(0).getHeight()));
+        binding.etWeight.setText(String.valueOf(personalInfo.get(0).getWeight()));
         sex = personalInfo.get(0).getSex();
 
 
-        RadioButton rbW = (RadioButton) findViewById(R.id.rbW);
-        rbW.setOnClickListener(radioButtonClickListener);
-        RadioButton rbM = (RadioButton) findViewById(R.id.rbM);
-        rbM.setOnClickListener(radioButtonClickListener);
+
+        binding.rbW.setOnClickListener(radioButtonClickListener);
+
+        binding.rbM.setOnClickListener(radioButtonClickListener);
 
         switch (sex) {
             case "M":
-                rbM.setChecked(true);
+                binding.rbM.setChecked(true);
                 break;
             case "W":
-                rbW.setChecked(true);
+                binding.rbW.setChecked(true);
             default:
-                rbW.setChecked(false);
-                rbW.setChecked(false);
+                binding.rbW.setChecked(false);
+                binding.rbW.setChecked(false);
         }
     }
 
@@ -157,7 +149,11 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
         final int oldTime = item.getTime();
         new MaterialDialog.Builder(this)
                 .title("Продолжительность")
-                .backgroundColor(Color.rgb(63, 81, 181))
+
+                .backgroundColorRes(R.color.colorPrimaryDark)
+                .positiveColorRes(R.color.cardview_light_background)
+                .negativeColorRes(R.color.cardview_light_background)
+
                 .inputType(InputType.TYPE_CLASS_NUMBER)
                 .inputRangeRes(1, 3, R.color.colorAccent)
                 .input("Введите время", "", new MaterialDialog.InputCallback() {
@@ -177,13 +173,14 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
                                     curTime += time - oldTime;
                                 }
                                 chooseColor();
-                                twTimeLeft.setText(String.valueOf(curTime) + "/1440");
+                                binding.twTimeLeft.setText(String.valueOf(curTime) + "/1440");
 
                             }
                         }
                 )
-                .negativeText("Cancel")
-                .positiveText("Save")
+
+                .negativeText("Отмена")
+                .positiveText("ОК")
                 .show();
 
     }
@@ -204,9 +201,9 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
 
 
     private void saveAndCount() {
-        int age = Integer.parseInt(etAge.getText().toString());
-        int weight = Integer.parseInt(etWeight.getText().toString());
-        int height = Integer.parseInt(etHeight.getText().toString());
+        int age = Integer.parseInt(binding.etAge.getText().toString());
+        int weight = Integer.parseInt(binding.etWeight.getText().toString());
+        int height = Integer.parseInt(binding.etHeight.getText().toString());
         dbHelper.setPersonalInfo(age, weight, height, sex, 1);
 
         dbHelper.insertRowInPersonalEnergy();
@@ -214,7 +211,7 @@ public class EnergyConsumption extends AppCompatActivity implements OnItemClickL
         PersonalConsumtion personalConsumtion = dbHelper.getTodayPersonalEnergy();
         Calculations calculations = new Calculations(dbHelper);
         calculations.calculateDailyConsumption(personalConsumtion);
-        dbHelper.setTodayPersonalEnergy(personalConsumtion);
+        dbHelper.setTargetPersonalEnergy(personalConsumtion);
     }
 
     private void makeToast(String a) {
